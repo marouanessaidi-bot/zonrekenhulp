@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Zonnepanelen na 2027: kosten en terugverdientijd</title>
+<meta name="description" content="Reken uit wat zonnepanelen kosten en wanneer je ze terugverdient nu de salderingsregeling per 1 januari 2027 stopt.">
+<style>
+:root {
+  --bg: #f6f7f9; --kaart: #ffffff; --tekst: #1b1f24; --zacht: #5a6370; --lijn: #d8dde4;
+  --accent: #1f5fd1; --goed: #12703a; --goed-bg: #e3f4ea; --fout: #a8231b; --fout-bg: #fbe7e5;
+  --let: #7a5600; --let-bg: #fff3d6; --veld: #ffffff;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #14171b; --kaart: #1d2229; --tekst: #e8ecf1; --zacht: #a1abb8; --lijn: #333b46; --accent: #6ea2ff;
+    --goed: #6fdc9a; --goed-bg: #17301f; --fout: #ff9d94; --fout-bg: #3a1d1b; --let: #f2cf7a; --let-bg: #33290f; --veld: #12161b; }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--tekst); font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+main { max-width: 720px; margin: 0 auto; padding: 16px; }
+h1 { font-size: 1.5rem; line-height: 1.2; margin: 8px 0 8px; }
+h2 { font-size: 1.15rem; margin: 0 0 10px; }
+p, ul { margin: 0 0 10px; }
+ul { padding-left: 20px; }
+.kaart { background: var(--kaart); border: 1px solid var(--lijn); border-radius: 12px; padding: 14px; margin-bottom: 14px; }
+.zacht { color: var(--zacht); font-size: 0.9rem; }
+.notitie { border-left: 4px solid var(--let); background: var(--let-bg); border-radius: 8px; padding: 10px 12px; margin-bottom: 14px; font-size: 0.95rem; }
+.rij { display: grid; grid-template-columns: 1fr; gap: 10px; margin-bottom: 10px; }
+@media (min-width: 520px) { .rij { grid-template-columns: 1fr 1fr; } }
+label { font-size: 0.9rem; color: var(--zacht); display: block; margin-bottom: 2px; }
+input, select { width: 100%; font: inherit; font-size: 16px; color: var(--tekst); background: var(--veld); border: 1px solid var(--lijn); border-radius: 8px; padding: 8px 10px; min-height: 44px; }
+input:focus-visible, select:focus-visible, summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 1px; }
+.hint { font-size: 0.8rem; color: var(--zacht); margin-top: 2px; }
+summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; font-weight: 600; }
+.uitkomst { border: 2px solid var(--accent); }
+.groot { font-size: 1.9rem; font-weight: 700; line-height: 1.2; margin: 0 0 4px; }
+dl { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; margin: 10px 0; }
+dt { color: var(--zacht); } dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
+.fout { background: var(--fout-bg); color: var(--fout); border-radius: 8px; padding: 10px 12px; }
+.goed { background: var(--goed-bg); border-radius: 8px; padding: 10px 12px; margin-top: 10px; }
+.plek { border: 1px dashed var(--lijn); border-radius: 8px; padding: 10px 12px; color: var(--zacht); font-size: 0.9rem; }
+.ph { background: #ffe14d; color: #000; padding: 0 3px; border-radius: 3px; font-weight: 600; }
+.knop { display: inline-block; font: inherit; min-height: 44px; padding: 8px 16px; border-radius: 8px; border: 1px solid var(--lijn); background: var(--lijn); color: var(--zacht); cursor: not-allowed; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+th, td { text-align: left; padding: 4px 6px 4px 0; vertical-align: top; border-bottom: 1px solid var(--lijn); }
+</style>
+</head>
+<body>
+<main>
+<h1>Zonnepanelen na 2027: wat kosten ze en wanneer verdien je ze terug?</h1>
+<p>Per 1 januari 2027 stopt de salderingsregeling. Vul hieronder je situatie in en zie direct wat dat voor jouw panelen betekent.</p>
+<div class="notitie" id="vermelding">Deze pagina is van Zonrekenhulp. Via de knop naar offertes ga je naar een andere partij; wij krijgen een vergoeding als je daar een aanvraag doet. Dat verandert niets aan de berekening.</div>
+
+<div class="kaart">
+  <h2>Wat verandert er per 2027?</h2>
+  <ul>
+    <li>De salderingsregeling stopt per 1 januari 2027. Je mag opgewekte stroom dan niet meer verrekenen met de stroom die je gebruikt. <span class="zacht">(Rijksoverheid, salderingsregeling)</span></li>
+    <li>Wat je teruglevert krijg je dan als terugleververgoeding. Tot 2030 moet die minimaal 50% van het kale leveringstarief zijn. Leveranciers mogen alleen kosten rekenen die ze maken om teruggeleverde stroom te verwerken. <span class="zacht">(Rijksoverheid)</span></li>
+    <li>Wat er na 2030 geldt, hebben we niet kunnen vinden.</li>
+    <li>Milieu Centraal schrijft dat je zonnepanelen nog steeds lonen en dat je ze in de levensduur terugverdient. <span class="zacht">(Milieu Centraal, salderingsregeling voor zonnepanelen, laatst gewijzigd 5 oktober 2026)</span></li>
+  </ul>
+</div>
+
+<div class="kaart">
+  <h2>Rekenhulp</h2>
+  <div class="rij">
+    <div><label for="panelen">Aantal panelen</label><input id="panelen" type="number" inputmode="numeric" min="1" step="1" value="10"></div>
+    <div><label for="wp">Vermogen per paneel (Wp)</label><input id="wp" type="number" inputmode="numeric" min="50" step="5" value="435"></div>
+  </div>
+  <div class="rij">
+    <div><label for="ligging">Ligging van het dak</label><select id="ligging"></select></div>
+    <div><label for="verbruik">Jaarverbruik stroom (kWh)</label><input id="verbruik" type="number" inputmode="numeric" min="1" step="50" value="2700">
+      <div class="hint">Zie je jaarafrekening. 2.700 is een aanname, geen bronwaarde.</div></div>
+  </div>
+  <div class="rij">
+    <div><label for="stroomprijs">Stroomprijs (euro per kWh)</label><input id="stroomprijs" type="number" inputmode="decimal" min="0.01" step="0.01" value="0.28">
+      <div class="hint">Gemiddeld 0,28 (CBS 2025 via ANWB); recent tussen 0,26 en 0,30.</div></div>
+    <div><label for="eigen">Hoeveel stroom gebruik je zelf?</label><select id="eigen"></select></div>
+  </div>
+  <div class="rij">
+    <div><label for="offerte">Prijs uit je offerte in euro (leeg laten als je die nog niet hebt)</label><input id="offerte" type="number" inputmode="numeric" min="1" step="100" placeholder="bijvoorbeeld 4500">
+      <div class="hint">Zonder offerte rekenen we met 0,87 euro per Wp (Milieu Centraal: 3.800 euro voor 10 panelen van 435 Wp). Die bron zegt niet of installatie is inbegrepen.</div></div>
+  </div>
+  <details>
+    <summary>Meer opties</summary>
+    <div class="rij">
+      <div><label for="terug">Waarde per teruggeleverde kWh (euro, netto)</label><input id="terug" type="number" inputmode="decimal" min="-0.1" step="0.005" value="0.0125">
+        <div class="hint">Lager dan de wettelijke 50% omdat leveranciers terugleverkosten aftrekken. Kan ook negatief zijn (tot -0,10). Zie "zo rekenen we".</div></div>
+      <div><label for="stijging">Prijsstijging stroom per jaar (%)</label><input id="stijging" type="number" inputmode="decimal" min="-20" max="20" step="0.5" value="0"></div>
+    </div>
+    <div class="rij">
+      <div><label for="degr">Afname opbrengst panelen per jaar (%)</label><input id="degr" type="number" inputmode="decimal" min="0" max="5" step="0.1" value="0">
+        <div class="hint">Staat standaard op 0, omdat we er geen bron voor hebben.</div></div>
+    </div>
+  </details>
+</div>
+
+<div class="kaart uitkomst" id="uitkomst" role="status" aria-live="polite"></div>
+
+<div class="kaart">
+  <h2>Zo rekenen we</h2>
+  <ul>
+    <li>Opbrengst = aantal panelen x Wp x 0,87 kWh per Wp x factor voor de ligging. Factoren (Milieu Centraal, 29 juni 2026, bij een dak van 30 graden): zuid 100%, zuidoost of zuidwest 95%, oost en west 80%, noord 60%. We rekenen met 0,87 kWh per Wp als basis (Milieu Centraal) en laten onduidelijk of dat een ideaal of een gemiddeld dak is.</li>
+    <li>Zelf gebruikt = het gekozen percentage x de opbrengst, of als je jaarverbruik lager is, x je jaarverbruik. Dat laatste is onze aanname: je kunt nooit meer zelf gebruiken dan je verbruikt. De rest gaat terug naar het net. Percentages: standaard 30%; met slim gebruik 35%; met warmtepomp met voorraadvat 45% (Milieu Centraal, 24 juni 2026).</li>
+    <li>Besparing per jaar = zelf gebruikt x stroomprijs + teruggeleverd x netto waarde per teruggeleverde kWh.</li>
+    <li>Netto waarde per teruggeleverde kWh: 1,25 cent (Milieu Centraal, kosten en opbrengst, 10 september 2026). Op de pagina over de salderingsstop (24 juni 2026) noemt Milieu Centraal netto rond een halve cent, na terugleverkosten. Het verschilt per leverancier en is lager dan de wettelijke 50% omdat leveranciers terugleverkosten aftrekken: kijk in je eigen contract en pas het bedrag aan bij "meer opties".</li>
+    <li>Stroomprijs: 0,28 euro per kWh, CBS-gemiddelde 2025 via ANWB. Recent tussen 0,26 (CBS via ANWB) en 0,30 (ANWB, september 2026).</li>
+    <li>Prijs: 0,87 euro per Wp, Milieu Centraal (pagina van 10 september 2026, prijs 2025). Btw is 0% op panelen bij een woning (Milieu Centraal; Knab, juni 2026), behalve in uitzonderingen. Heb je een offerte, vul die dan in.</li>
+    <li>Terugverdientijd: we tellen jaar voor jaar de besparing op, met je prijsstijging en afname van de opbrengst, tot de investering terug is. We kijken maximaal 30 jaar. De netto waarde per teruggeleverde kWh laten we niet stijgen.</li>
+    <li>Winst over 25 jaar: de besparing van 25 jaar (de levensduur volgens Milieu Centraal) min de investering.</li>
+    <li>"Als je nog wel salderde": alles wat je opwekt, tot je jaarverbruik, tegen de volle stroomprijs. Zo zie je wat het einde van salderen per jaar kost.</li>
+    <li>Niet meegenomen: onderhoud, vervanging van de omvormer, lening of rente, thuisbatterij, subsidies.</li>
+  </ul>
+  <p class="zacht">Bronnen: Rijksoverheid (salderingsregeling); Milieu Centraal (kosten en opbrengst zonnepanelen; hoe geschikt is je dak; zonnestroom als de saldering stopt; salderingsregeling voor zonnepanelen); ANWB (wat kost 1 kWh); CBS; Knab (btw op zonnepanelen).</p>
+</div>
+
+<div class="kaart" id="offertes">
+  <h2>Offertes vergelijken</h2>
+  <p><span class="knop" role="link" aria-disabled="true" tabindex="-1">Offertes vergelijken (advertentie)</span></p>
+  <!-- href volgt na goedkeuring van het netwerk -->
+  <p class="zacht">Advertentie: wij krijgen een vergoeding als je via deze knop een offerte aanvraagt.</p>
+</div>
+
+<div class="kaart">
+  <p><strong>Cijfers van 12 oktober 2026.</strong> Dit is een schatting, geen advies. Prijzen, tarieven en regels kunnen veranderen. Deze pagina bewaart niets en verstuurt niets: alle berekeningen gebeuren in je eigen browser.</p>
+  <p>Zonrekenhulp, <a href="mailto:marouanessaidi@gmail.com">marouanessaidi@gmail.com</a>.</p>
+  <p class="zacht"><strong>Privacy.</strong> Deze pagina plaatst geen cookies en slaat niets op; alles rekent in je eigen browser. Klik je door naar de offertesite, dan gelden daar hun eigen privacy- en cookieregels en kan die partij bijhouden dat je via ons kwam.</p>
+</div>
+</main>
+
+<script src="kern.js"></script>
+<script>
+(function () {
+  var K = window.ZonRekenaar;
+  var $ = function (id) { return document.getElementById(id); };
+  var lig = $('ligging'), eig = $('eigen');
+  Object.keys(K.LIGGING).forEach(function (k) { lig.add(new Option(K.LIGGING[k].label, k)); });
+  Object.keys(K.EIGEN_VERBRUIK).forEach(function (k) { eig.add(new Option(K.EIGEN_VERBRUIK[k].label, k)); });
+  var getal = function (id) { var v = $(id).value.replace(',', '.').trim(); return v === '' ? undefined : Number(v); };
+
+  function invoer() {
+    var st = getal('stijging'), dg = getal('degr');
+    return {
+      aantalPanelen: getal('panelen'), wpPerPaneel: getal('wp'), ligging: lig.value,
+      jaarverbruik: getal('verbruik'), stroomprijs: getal('stroomprijs'),
+      deelEigenVerbruik: K.EIGEN_VERBRUIK[eig.value].deel,
+      totalePrijs: getal('offerte'), nettoTerugleverwaarde: getal('terug'),
+      prijsstijging: st === undefined ? undefined : st / 100, degradatie: dg === undefined ? undefined : dg / 100
+    };
+  }
+  function euro(x) { return '€ ' + K.nl(x, 0); }
+  function esc(t) { var d = document.createElement('div'); d.textContent = t; return d.innerHTML; }
+
+  function toon() {
+    var u = K.bereken(invoer()), el = $('uitkomst');
+    window.laatsteUitkomst = u;
+    if (!u.ok) {
+      el.innerHTML = '<h2>Controleer je invoer</h2><div class="fout"><ul>' + u.fouten.map(function (f) { return '<li>' + esc(f) + '</li>'; }).join('') + '</ul></div>';
+      return;
+    }
+    var lang = u.terugverdientijd === null || u.terugverdientijd > u.invoer.levensduur;
+    var tvt = lang ? 'niet binnen ' + u.invoer.levensduur + ' jaar' : 'ongeveer ' + K.nl(u.terugverdientijd, 1) + ' jaar';
+    el.innerHTML =
+      '<h2>Uitkomst</h2>' +
+      '<p class="groot" id="u-tvt">' + tvt + '</p><p class="zacht">terugverdientijd</p>' +
+      '<dl>' +
+      '<dt>Investering</dt><dd id="u-inv">' + euro(u.investering) + '</dd>' +
+      '<dt>Opbrengst per jaar</dt><dd id="u-opb">' + K.nl(u.jaaropbrengstKwh, 0) + ' kWh</dd>' +
+      '<dt>Zelf gebruikt</dt><dd id="u-zelf">' + K.nl(u.zelfGebruiktKwh, 0) + ' kWh</dd>' +
+      '<dt>Teruggeleverd</dt><dd id="u-terug">' + K.nl(u.teruggeleverdKwh, 0) + ' kWh</dd>' +
+      '<dt>Besparing per jaar</dt><dd id="u-bes">' + euro(u.besparingPerJaar) + '</dd>' +
+      '<dt>Over 25 jaar, na aftrek investering</dt><dd id="u-25">' + euro(u.winstNa25Jaar) + '</dd>' +
+      '<dt>Besparing per jaar als je nog wel salderde</dt><dd id="u-sal">' + euro(u.besparingMetSaldering) + '</dd>' +
+      '<dt>Wat het einde van salderen kost, per jaar</dt><dd id="u-verlies">' + euro(u.verliesDoorEindeSaldering) + '</dd>' +
+      '</dl>' +
+      '<p class="zacht" id="u-mc">Ter vergelijking: Milieu Centraal komt voor 10 panelen op ongeveer 260 euro besparing per jaar.</p>' +
+      '<div class="goed">' + u.advies.map(function (t) { return '<p>' + esc(t) + '</p>'; }).join('') + '</div>';
+  }
+  document.querySelectorAll('input, select').forEach(function (e) { e.addEventListener('input', toon); e.addEventListener('change', toon); });
+  toon();
+})();
+</script>
+</body>
+</html>
